@@ -1,0 +1,4 @@
+hello this test for git 
+git config --global user.name=linxmint17
+git config --global user.email=jackshepherd888@sina.cn
+git config --global core.editor=vi
