@@ -26,4 +26,4 @@
 #export PILOTRATE=115200
 
 test -s ~/.alias && . ~/.alias || true
-PS1="\[\033[0;32m\]Apr23Sun \A\u@\h:\W>\[\033[0m\]"
+PS1="\[\033[0;32m\]Apr23Sun \A\u@:\W>\[\033[0m\]"
