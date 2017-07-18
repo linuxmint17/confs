@@ -128,3 +128,9 @@ alias rm='rm -i'
 alias e='emacs'
 #added by suse 
 export PATH="/opt/anaconda3/bin:/opt/anaconda2/bin:$PATH"
+alias youtube-dl='youtube-dl --proxy socks5://127.0.0.1:1080/'
+alias cx='chmod +x'
+alias gits='git status'
+alias gitc='git commit'
+alias gita='git add'
+alias gitp='git push'
