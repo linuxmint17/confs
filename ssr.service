@@ -1,7 +1,7 @@
 [Unit]
 Description=ShadowsocksR server
-After=network.target
-Wants=network.target
+After=after-local.service
+#Wants=network.target
 
 [Service]
 Type=forking
