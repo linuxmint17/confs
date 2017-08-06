@@ -2,5 +2,5 @@
 	name = suse
 	email = opensuselinux13.2@gmail.com
 [core]
-	editor = 'emacs -nw'
+	editor = emacs -nw
 
