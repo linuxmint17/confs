@@ -39,5 +39,3 @@ alias du='du -h'
 alias ssh='ssh -p 26780'
 #export  PS1='\A\[$(ppwd)\]\u@\h:\W>'
 export PS1='\[\033[1;37m\]\A\[$(ppwd)\]\u@\h:\W>\[\033[0m\]'
-#the following PS1 is for root
-#export PS1='\[\033[0;31m\]\A\[$(ppwd)\]\u@\h:\W>\[\033[0m\]'
