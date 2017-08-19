@@ -39,3 +39,20 @@ alias du='du -h'
 alias ssh='ssh -p 26780'
 #export  PS1='\A\[$(ppwd)\]\u@\h:\W>'
 export PS1='\[\033[1;37m\]\A\[$(ppwd)\]\u@\h:\W>\[\033[0m\]'
+#some color sequence for text 
+#Sequence     Text Color     Sequence       Text Color
+#\033[0;30m     Black        \033[1;30m     Dark  Gray
+#\033[0;31m     Red          \033[1;31m     Light Red
+#\033[0;32m     Green        \033[1;32m     Light Green
+#\033[0;33m     Brown        \033[1;33m     Yellow
+#\033[0;34m     Blue         \033[1;34m     Light Blue
+#\033[0;35m     Purple       \033[1;35m     Light Purple
+#\033[0;36m     Cyan         \033[1;36m     Lgitht Cyan
+#\033[0;37m     Light Grey   \033[1;37m     Write
+#escape Sequences used To Set Baktground Color
+#Sequence    Background Color     Sequence       Background Color
+#\033[0;40m     Black             \033[0;44m      Blue
+#\033[0;41m     Red               \033[0;45m      Purple
+#\033[0;42m     Green             \033[0;46m      Cyan
+#\033[0;43m     Brown             \033[0;47m      Light Grey
+export MAN_POSIXLY_CORRECT=1
