@@ -36,9 +36,14 @@ alias gitp='git push'
 alias emacs='emacs -nw'
 alias free='free -h'
 alias du='du -h'
-alias ssh='ssh -p 26780'
+#alias ssh='ssh -p 26780'
+alias bashconf='emacs -nw ~/.bashrc ;source ~/.bashrc'
+alias l='ls -l'
+alias cd..='cd ..'
+alias o='less'
+alias ll='ls -la'
 #export  PS1='\A\[$(ppwd)\]\u@\h:\W>'
-export PS1='\[\033[1;37m\]\A\[$(ppwd)\]\u@\h:\W>\[\033[0m\]'
+export PS1='\[\033[1;37m\]\A\u@\h:\W>\[\033[0m\]'
 #some color sequence for text 
 #Sequence     Text Color     Sequence       Text Color
 #\033[0;30m     Black        \033[1;30m     Dark  Gray
@@ -55,4 +60,12 @@ export PS1='\[\033[1;37m\]\A\[$(ppwd)\]\u@\h:\W>\[\033[0m\]'
 #\033[0;41m     Red               \033[0;45m      Purple
 #\033[0;42m     Green             \033[0;46m      Cyan
 #\033[0;43m     Brown             \033[0;47m      Light Grey
-export MAN_POSIXLY_CORRECT=1
+export MAN_POOASIXLY_CORRECT=1
+
+###for auto completion bash
+if [ -f /etc/bash_completion ] ;then
+    source /etc/bash_completion
+    fi
+### the following line for GPG config
+
+export GPG_TTY=$(tty)
