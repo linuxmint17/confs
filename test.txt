@@ -1,3 +1,4 @@
 hello git very intresting
 Linux is free and cool
 test git ssh always ask for username and passwd
+test commit with gpg signature 
