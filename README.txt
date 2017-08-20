@@ -1,1 +1,1 @@
-This is only a personal bashrc file;
+Here are some personal configure file;
