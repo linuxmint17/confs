@@ -38,12 +38,14 @@ alias free='free -h'
 alias du='du -h'
 #alias ssh='ssh -p 26780'
 alias bashconf='emacs -nw ~/.bashrc ;source ~/.bashrc'
-alias l='ls -l'
+alias l='ls -lh'
 alias cd..='cd ..'
 alias o='less'
-alias ll='ls -la'
+alias ll='ls -lah'
+alias cls='printf "\033c"'
+alias ping='ping -c 4 '
 #export  PS1='\A\[$(ppwd)\]\u@\h:\W>'
-export PS1='\[\033[1;37m\]\A\u@\h:\W>\[\033[0m\]'
+ PS1='\[\033[1;37m\]\A\u@\h:\W>\[\033[0m\]'
 #some color sequence for text 
 #Sequence     Text Color     Sequence       Text Color
 #\033[0;30m     Black        \033[1;30m     Dark  Gray
@@ -69,3 +71,41 @@ if [ -f /etc/bash_completion ] ;then
 ### the following line for GPG config
 
 export GPG_TTY=$(tty)
+export PATH=~/bin:"$PATH"
+upgrade(){
+    sudo apt-get update &&
+	sudo apt-get -y upgrade;
+    echo;
+}
+
+#ipif(){
+ #   if grep -P "(([1-9]\d{0,2})\.){3}(?2)"<<< "$1";then
+	#	curl ipinfo.io/"$1"
+  #      curl ip.cn/"$1"
+   # else
+#	ipawk=($(host "$1"|awk '/address/ { print $NF }'|head --lines 1))
+#		curl ipinfo.io/${ipawk[1]}
+	#	curl ipinfo.io
+	#        curl ip.cn
+ #   fi
+#    echo
+
+#}
+#get your ip
+ipif(){
+    curl ip.cn
+}
+#cd and ls
+cl(){
+    local dir="$1"
+    if [[ -d "$dir" ]] ;then
+	cd $dir >/dev/null && ls
+    else
+	echo "bash : cl : $dir Directorf not found "
+    fi
+}
+      
+#calculator
+calc(){
+    echo "scale=3 ; $@"|bc -l
+    }
