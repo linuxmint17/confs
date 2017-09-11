@@ -36,8 +36,9 @@ alias gitp='git push'
 alias emacs='emacs -nw'
 alias free='free -h'
 alias du='du -h'
+alias md='mkdir -p'
 #alias ssh='ssh -p 26780'
-alias bashconf='emacs -nw ~/.bashrc ;source ~/.bashrc'
+alias bashconf='emacs -nw ~/.bashrc  && source ~/.bashrc'
 alias l='ls -lh'
 alias cd..='cd ..'
 alias o='less'
@@ -95,6 +96,8 @@ upgrade(){
 ipif(){
     curl ip.cn
 }
+
+
 #cd and ls
 cl(){
     local dir="$1"
@@ -108,4 +111,9 @@ cl(){
 #calculator
 calc(){
     echo "scale=3 ; $@"|bc -l
+    }
+#create a hotspot named 'deepinhotspot' passwd is 'deepin15'
+hotspot(){
+    sudo  create_ap --daemon  wlp2s0 enp3s0 deepinhotspot deepin15 
+    echo 
     }
