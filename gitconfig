@@ -5,3 +5,5 @@
 [core]
 	editor = emacs -nw
 
+[credential]
+	helper = store
