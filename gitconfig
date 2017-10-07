@@ -7,3 +7,11 @@
 
 [credential]
 	helper = store
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	st = status
+	pu = push
