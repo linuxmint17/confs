@@ -38,13 +38,17 @@ alias free='free -h'
 alias du='du -h'
 alias md='mkdir -p'
 #alias ssh='ssh -p 26780'
-alias bashconf='emacs -nw ~/.bashrc  && source ~/.bashrc'
+alias bashconf='emacs ~/.bashrc  && source ~/.bashrc'
 alias l='ls -lh'
 alias cd..='cd ..'
 alias o='less'
 alias ll='ls -lah'
 alias cls='printf "\033c"'
 alias ping='ping -c 4 '
+alias clang='clang -O0 -g -W'
+alias clang++='clang++ -O0 -g -W'
+alias gcc='gcc -O0 -g -W'
+alias g++='g++ -O0 -g -w'
 #export  PS1='\A\[$(ppwd)\]\u@\h:\W>'
  PS1='\[\033[1;37m\]\A\u@\h:\W>\[\033[0m\]'
 #some color sequence for text 
@@ -117,3 +121,6 @@ hotspot(){
     sudo  create_ap --daemon  wlp2s0 enp3s0 deepinhotspot deepin15 
     echo 
     }
+#the following lines to solve "pressed  tab but n complete"
+complete -cf sudo
+complete -cf man
