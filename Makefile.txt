@@ -14,4 +14,4 @@ all:$(OBJS)
 %.exe:%.cpp
 	$(CXX) $(CXXFLAGS)  $< -o $@
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) *.out *~
