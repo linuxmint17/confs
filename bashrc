@@ -50,7 +50,7 @@ alias clang++='clang++ -O0 -g -W'
 alias gcc='gcc -O0 -g -W'
 alias g++='g++ -O0 -g -w'
 #export  PS1='\A\[$(ppwd)\]\u@\h:\W>'
- PS1='\[\033[1;37m\]\A\u@\h:\W>\[\033[0m\]'
+ PS1='\[\033[0;35m\]\A\u@\h:\W>\[\033[0m\]'
 #some color sequence for text 
 #Sequence     Text Color     Sequence       Text Color
 #\033[0;30m     Black        \033[1;30m     Dark  Gray
