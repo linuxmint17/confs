@@ -53,6 +53,8 @@
 (global-hl-line-mode 1)
 ;;No.4 always turn line number
 (global-linum-mode 1)
-
+;;No.5 set default file encoding
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
 
 
