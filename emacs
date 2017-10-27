@@ -56,5 +56,8 @@
 ;;No.5 set default file encoding
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
-
+;;No.6 use the plugin auto-save write by wang yong
+(require 'auto-save)
+(auto-save-enable)
+(setq auto-save-sclient 1)
 
