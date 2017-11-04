@@ -6,7 +6,8 @@ CXX=clang++
 #-pg enable gprof
 #-o0  no optimizing
 CXXFLAGS= -g -W -O0 -pg -std=c++14
-
+#this is for opencv compile
+OPENCVFLAGS=$(pkg-config --cflags --libs opencv)
 SRCS=$(wildcard *.cpp )
 OBJS=$(patsubst %.cpp,%.exe,$(SRCS))
 .PHONY: all clean
