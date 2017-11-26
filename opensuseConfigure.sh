@@ -11,4 +11,4 @@ sudo zypper install --non-interactive google-chrome-stable
 sudo rpm  --import "https://download.sublimetext.com/sublimehq-rpm-pub.gpg"
 sudo zypper addrepo -g -f https://download.sublimetext.com/rpm/stable/x86_64/sulime-text.repo
 
-sudo zypper install sublime-text
+sudo zypper install -y  sublime-text
