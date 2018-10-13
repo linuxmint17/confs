@@ -29,6 +29,7 @@ test -s ~/.alias && . ~/.alias || true
 alias e='emacs'
 alias youtube-dl='youtube-dl --proxy socks5://127.0.0.1:1080/'
 alias cx='chmod +x'
+# git command alias 
 alias gits='git status'
 alias gitc='git commit'
 alias gita='git add'
@@ -36,9 +37,8 @@ alias gitp='git push'
 alias emacs='emacs -nw'
 alias free='free -h'
 alias du='du -h'
-alias md='mkdir -p'
 #alias ssh='ssh -p 26780'
-alias bashconf='emacs ~/.bashrc  && source ~/.bashrc'
+
 alias l='ls -lh'
 alias cd..='cd ..'
 alias o='less'
@@ -50,7 +50,7 @@ alias clang++='clang++ -O0 -g -W'
 alias gcc='gcc -O0 -g -W'
 alias g++='g++ -O0 -g -w'
 #export  PS1='\A\[$(ppwd)\]\u@\h:\W>'
- PS1='\[\033[0;35m\]\A\u@\h:\W>\[\033[0m\]'
+ PS1='\[\033[0;32m\]\A[\u@\h]:\W>\[\033[0m\]'
 #some color sequence for text 
 #Sequence     Text Color     Sequence       Text Color
 #\033[0;30m     Black        \033[1;30m     Dark  Gray
@@ -117,10 +117,29 @@ calc(){
     echo "scale=3 ; $@"|bc -l
     }
 #create a hotspot named 'deepinhotspot' passwd is 'deepin15'
-hotspot(){
-    sudo  create_ap --daemon  wlp2s0 enp3s0 deepinhotspot deepin15 
-    echo 
-    }
+#hotspot(){
+#    sudo  create_ap --daemon  wlp2s0 enp3s0 deepinhotspot deepin15 
+#    echo 
+#    }
 #the following lines to solve "pressed  tab but n complete"
 complete -cf sudo
 complete -cf man
+#search software
+search(){
+    sudo apt-cache search ${1};
+}
+#install software
+ins(){
+    sudo apt-get install ${1};
+}
+#search weather installed some software
+qeury(){
+    dpkg  -l |grep ${1};
+}
+#config bashrc file 
+bashcnf(){
+    emacs -nw ~/.bashrc &&  source ~/.bashrc;
+}
+
+    
+
