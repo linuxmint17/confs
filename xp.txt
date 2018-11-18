@@ -1,0 +1,43 @@
+1.一个int类型的数字取负数再取反（～）等于--
+
+e.g.
+int cat = 13;
+ cat - ~-cat;//this experssion's value is 1
+ putchar (~-~-~-cat);//this line equal to putchar('\n'); \n 的ascii code
+ 十进制的值为10
+ 
+2.C语言中x[i]的计算方法 *(x+sizeof(i))  x是个地址，一般写数组的时候，x是
+常量指针，
+
+e.g.1
+int i;
+main ()
+{
+  for (; i["]<i;++i){--i;}"]; read ('-' - '-', i++ + "hell\
+o, world!\n", '/' / '/'));
+}
+read (j, i, p)
+{
+  write (j / p + p, i-- - j, i / i);
+}
+
+i的默认初始值为0,大多数编译器的实现，然后 i["]<i;++i){--i;}"]作为循环终止的
+条件，循环体内，i的值会改变，方括号内的字符串的长度刚好是13,和helloworld的
+长度一样，字符串实际和整数相加的时候是拿首地址计算偏移量来算的
+eg.2
+int is_big_endian(){
+int a =0xbabe;
+return 0[(unsigned char *)&a]== 0xbe;
+}
+
+3.c语言曾经main函数的参数可以有3个可以有一个，还可以自己调用自己
+
+	 
+
+
+查看linux运行级别
+who -r
+runlevel
+查看linux的默认网关
+route -n
+netstat -nr
