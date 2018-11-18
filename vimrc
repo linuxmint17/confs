@@ -58,3 +58,5 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 set nu
+set hls is
+set nocp
