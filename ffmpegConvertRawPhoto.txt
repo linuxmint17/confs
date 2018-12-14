@@ -1,0 +1,1 @@
+ffmpeg -i inputrawdata -s 512x800  -f rgb565   -f image2 -o out.jpeg

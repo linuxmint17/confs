@@ -1,0 +1,16 @@
+[Unit]
+Description=ShadowsocksR server
+After=after-local.service
+#Wants=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/shadowsocks.pid
+ExecStart=/usr/bin/ssserver --pid-file /var/run/shadowsocks.pid -c /usr/local/config.json -d start
+ExecStop=/usr/bin/ssserver  --pid-file /var/run/shadowsocks.pid -c /usr/local/config.json -d stop
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
