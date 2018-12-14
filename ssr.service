@@ -6,8 +6,8 @@ After=after-local.service
 [Service]
 Type=forking
 PIDFile=/var/run/shadowsocksr.pid
-ExecStart=/usr/bin/python /usr/local/shadowsocksr/shadowsocks/local.py --pid-file /var/run/shadowsocksr.pid -c /usr/local/shadowsocksr/shadowsocksr.json -d start
-ExecStop=/usr/bin/python /usr/local/shadowsocksr/shadowsocks/local.py --pid-file /var/run/shadowsocksr.pid -c /usr/local/shadowsocksr/shadowsocksr.json -d stop
+ExecStart=/usr/bin/python /usr/local/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocksr.pid -c /usr/local/shadowsocksr/shadowsocksr.json -d start
+ExecStop=/usr/bin/python /usr/local/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocksr.pid -c /usr/local/shadowsocksr/shadowsocksr.json -d stop
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=always
