@@ -60,3 +60,5 @@ endif
 set nu
 set hls is
 set nocp
+" Allow saving of files as sudo when I fogot to start vim using sudo
+cmap w!! w !sudo tee > /dev/null %
