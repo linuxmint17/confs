@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Auto install Shadowsocks Server (all version)
+# Auto install Shadowsocks Server (Python libev)
 #
 # Copyright (C) 2016-2017 Teddysun <i@teddysun.com>
 #
@@ -8,11 +8,9 @@
 #
 # Reference URL:
 # https://github.com/shadowsocks/shadowsocks
-# https://github.com/shadowsocks/shadowsocks-go
 # https://github.com/shadowsocks/shadowsocks-libev
 # https://github.com/shadowsocks/shadowsocks-windows
-# https://github.com/shadowsocksr/shadowsocksr
-#
+
 # Thanks:
 # @clowwindy  <https://twitter.com/clowwindy>
 # @breakwa11  <https://twitter.com/breakwa11>
@@ -32,7 +30,7 @@ plain='\033[0m'
 [[ $EUID -ne 0 ]] && echo -e "[${red}Error${plain}] This script must be run as root!" && exit 1
 
 cur_dir=$( pwd )
-software=(Shadowsocks-Python ShadowsocksR Shadowsocks-Go Shadowsocks-libev)
+software=(Shadowsocks-Python Shadowsocks-libev)
 
 libsodium_file="libsodium-1.0.15"
 libsodium_url="https://github.com/jedisct1/libsodium/releases/download/1.0.15/libsodium-1.0.15.tar.gz"
@@ -46,22 +44,6 @@ shadowsocks_python_init="/etc/init.d/shadowsocks-python"
 shadowsocks_python_config="/etc/shadowsocks-python/config.json"
 shadowsocks_python_centos="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks"
 shadowsocks_python_debian="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-debian"
-
-shadowsocks_r_file="shadowsocksr-manyuser"
-shadowsocks_r_url="https://github.com/teddysun/shadowsocksr/archive/manyuser.zip"
-shadowsocks_r_init="/etc/init.d/shadowsocks-r"
-shadowsocks_r_config="/etc/shadowsocks-r/config.json"
-shadowsocks_r_centos="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR"
-shadowsocks_r_debian="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR-debian"
-
-shadowsocks_go_file_64="shadowsocks-server-linux64-1.2.1"
-shadowsocks_go_url_64="http://dl.teddysun.com/shadowsocks/shadowsocks-server-linux64-1.2.1.gz"
-shadowsocks_go_file_32="shadowsocks-server-linux32-1.2.1"
-shadowsocks_go_url_32="http://dl.teddysun.com/shadowsocks/shadowsocks-server-linux32-1.2.1.gz"
-shadowsocks_go_init="/etc/init.d/shadowsocks-go"
-shadowsocks_go_config="/etc/shadowsocks-go/config.json"
-shadowsocks_go_centos="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-go"
-shadowsocks_go_debian="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-go-debian"
 
 shadowsocks_libev_init="/etc/init.d/shadowsocks-libev"
 shadowsocks_libev_config="/etc/shadowsocks-libev/config.json"
@@ -89,48 +71,7 @@ chacha20
 salsa20
 rc4-md5
 )
-go_ciphers=(
-aes-256-cfb
-aes-192-cfb
-aes-128-cfb
-aes-256-ctr
-aes-192-ctr
-aes-128-ctr
-chacha20-ietf
-chacha20
-salsa20
-rc4-md5
-)
-r_ciphers=(
-none
-aes-256-cfb
-aes-192-cfb
-aes-128-cfb
-aes-256-cfb8
-aes-192-cfb8
-aes-128-cfb8
-aes-256-ctr
-aes-192-ctr
-aes-128-ctr
-chacha20-ietf
-chacha20
-rc4-md5
-rc4-md5-6
-)
-# Reference URL:
-# https://github.com/breakwa11/shadowsocks-rss/blob/master/ssr.md
-# https://github.com/breakwa11/shadowsocks-rss/wiki/config.json
-# Protocol
-protocols=(
-origin
-verify_deflate
-auth_sha1_v4
-auth_sha1_v4_compatible
-auth_aes128_md5
-auth_aes128_sha1
-auth_chain_a
-auth_chain_b
-)
+
 # obfs
 obfs=(
 plain
@@ -330,24 +271,6 @@ download_files() {
             download "${shadowsocks_python_init}" "${shadowsocks_python_debian}"
         fi
     elif [ "${selected}" == "2" ]; then
-        download "${shadowsocks_r_file}.zip" "${shadowsocks_r_url}"
-        if check_sys packageManager yum; then
-            download "${shadowsocks_r_init}" "${shadowsocks_r_centos}"
-        elif check_sys packageManager apt; then
-            download "${shadowsocks_r_init}" "${shadowsocks_r_debian}"
-        fi
-    elif [ "${selected}" == "3" ]; then
-        if is_64bit; then
-            download "${shadowsocks_go_file_64}.gz" "${shadowsocks_go_url_64}"
-        else
-            download "${shadowsocks_go_file_32}.gz" "${shadowsocks_go_url_32}"
-        fi
-        if check_sys packageManager yum; then
-            download "${shadowsocks_go_init}" "${shadowsocks_go_centos}"
-        elif check_sys packageManager apt; then
-            download "${shadowsocks_go_init}" "${shadowsocks_go_debian}"
-        fi
-    elif [ "${selected}" == "4" ]; then
         get_libev_ver
         shadowsocks_libev_file="shadowsocks-libev-$(echo ${libev_ver} | sed -e 's/^[a-zA-Z]//g')"
         shadowsocks_libev_url="https://github.com/shadowsocks/shadowsocks-libev/releases/download/${libev_ver}/${shadowsocks_libev_file}.tar.gz"
@@ -436,44 +359,6 @@ if   [ "${selected}" == "1" ]; then
 }
 EOF
 elif [ "${selected}" == "2" ]; then
-    if [ ! -d "$(dirname ${shadowsocks_r_config})" ]; then
-        mkdir -p $(dirname ${shadowsocks_r_config})
-    fi
-    cat > ${shadowsocks_r_config}<<-EOF
-{
-    "server":"0.0.0.0",
-    "server_ipv6":"::",
-    "server_port":${shadowsocksport},
-    "local_address":"127.0.0.1",
-    "local_port":1080,
-    "password":"${shadowsockspwd}",
-    "timeout":120,
-    "method":"${shadowsockscipher}",
-    "protocol":"${shadowsockprotocol}",
-    "protocol_param":"",
-    "obfs":"${shadowsockobfs}",
-    "obfs_param":"",
-    "redirect":"",
-    "dns_ipv6":false,
-    "fast_open":${fast_open},
-    "workers":1
-}
-EOF
-elif [ "${selected}" == "3" ]; then
-    if [ ! -d "$(dirname ${shadowsocks_go_config})" ]; then
-        mkdir -p $(dirname ${shadowsocks_go_config})
-    fi
-    cat > ${shadowsocks_go_config}<<-EOF
-{
-    "server":"0.0.0.0",
-    "server_port":${shadowsocksport},
-    "local_port":1080,
-    "password":"${shadowsockspwd}",
-    "method":"${shadowsockscipher}",
-    "timeout":300
-}
-EOF
-elif [ "${selected}" == "4" ]; then
     local server_value="\"0.0.0.0\""
     if get_ipv6; then
         server_value="[\"[::0]\",\"0.0.0.0\"]"
@@ -877,73 +762,6 @@ install_shadowsocks_python() {
     fi
 }
 
-install_shadowsocks_r() {
-    cd ${cur_dir}
-    unzip -q ${shadowsocks_r_file}.zip
-    if [ $? -ne 0 ];then
-        echo -e "[${red}Error${plain}] unzip ${shadowsocks_r_file}.zip failed, please check unzip command."
-        install_cleanup
-        exit 1
-    fi
-    mv ${shadowsocks_r_file}/shadowsocks /usr/local/
-    if [ -f /usr/local/shadowsocks/server.py ]; then
-        chmod +x ${shadowsocks_r_init}
-        local service_name=$(basename ${shadowsocks_r_init})
-        if check_sys packageManager yum; then
-            chkconfig --add ${service_name}
-            chkconfig ${service_name} on
-        elif check_sys packageManager apt; then
-            update-rc.d -f ${service_name} defaults
-        fi
-    else
-        echo
-        echo -e "[${red}Error${plain}] ${software[1]} install failed."
-        echo "Please visit; https://teddysun.com/486.html and contact."
-        install_cleanup
-        exit 1
-    fi
-}
-
-install_shadowsocks_go() {
-    cd ${cur_dir}
-    if is_64bit; then
-        gzip -d ${shadowsocks_go_file_64}.gz
-        if [ $? -ne 0 ];then
-            echo -e "[${red}Error${plain}] Decompress ${shadowsocks_go_file_64}.gz failed."
-            install_cleanup
-            exit 1
-        fi
-        mv -f ${shadowsocks_go_file_64} /usr/bin/shadowsocks-server
-    else
-        gzip -d ${shadowsocks_go_file_32}.gz
-        if [ $? -ne 0 ];then
-            echo -e "[${red}Error${plain}] Decompress ${shadowsocks_go_file_32}.gz failed."
-            install_cleanup
-            exit 1
-        fi
-        mv -f ${shadowsocks_go_file_32} /usr/bin/shadowsocks-server
-    fi
-
-    if [ -f /usr/bin/shadowsocks-server ]; then
-        chmod +x /usr/bin/shadowsocks-server
-        chmod +x ${shadowsocks_go_init}
-
-        local service_name=$(basename ${shadowsocks_go_init})
-        if check_sys packageManager yum; then
-            chkconfig --add ${service_name}
-            chkconfig ${service_name} on
-        elif check_sys packageManager apt; then
-            update-rc.d -f ${service_name} defaults
-        fi
-    else
-        echo
-        echo -e "[${red}Error${plain}] ${software[2]} install failed."
-        echo "Please visit: https://teddysun.com/486.html and contact."
-        install_cleanup
-        exit 1
-    fi
-}
-
 install_shadowsocks_libev() {
     cd ${cur_dir}
     tar zxf ${shadowsocks_libev_file}.tar.gz
@@ -997,30 +815,6 @@ install_completed_python() {
     echo -e "Your Encryption Method: ${red} ${shadowsockscipher} ${plain}"
 }
 
-install_completed_r() {
-    clear
-    ${shadowsocks_r_init} start
-    echo
-    echo -e "Congratulations, ${green}${software[1]}${plain} server install completed!"
-    echo -e "Your Server IP        : ${red} $(get_ip) ${plain}"
-    echo -e "Your Server Port      : ${red} ${shadowsocksport} ${plain}"
-    echo -e "Your Password         : ${red} ${shadowsockspwd} ${plain}"
-    echo -e "Your Protocol         : ${red} ${shadowsockprotocol} ${plain}"
-    echo -e "Your obfs             : ${red} ${shadowsockobfs} ${plain}"
-    echo -e "Your Encryption Method: ${red} ${shadowsockscipher} ${plain}"
-}
-
-install_completed_go() {
-    clear
-    ${shadowsocks_go_init} start
-    echo
-    echo -e "Congratulations, ${green}${software[2]}${plain} server install completed!"
-    echo -e "Your Server IP        : ${red} $(get_ip) ${plain}"
-    echo -e "Your Server Port      : ${red} ${shadowsocksport} ${plain}"
-    echo -e "Your Password         : ${red} ${shadowsockspwd} ${plain}"
-    echo -e "Your Encryption Method: ${red} ${shadowsockscipher} ${plain}"
-}
-
 install_completed_libev() {
     clear
     ldconfig
@@ -1046,33 +840,6 @@ qr_generate_python() {
         echo -n "${qr_code}" | qrencode -s8 -o ${cur_dir}/shadowsocks_python_qr.png
         echo "Your QR Code has been saved as a PNG file path:"
         echo -e "${green} ${cur_dir}/shadowsocks_python_qr.png ${plain}"
-    fi
-}
-
-qr_generate_r() {
-    if [ "$(command -v qrencode)" ]; then
-        local tmp1=$(echo -n "${shadowsockspwd}" | base64 -w0 | sed 's/=//g;s/\//_/g;s/+/-/g')
-        local tmp2=$(echo -n "$(get_ip):${shadowsocksport}:${shadowsockprotocol}:${shadowsockscipher}:${shadowsockobfs}:${tmp1}/?obfsparam=" | base64 -w0)
-        local qr_code="ssr://${tmp2}"
-        echo
-        echo "Your QR Code: (For ShadowsocksR Windows, Android clients only)"
-        echo -e "${green} ${qr_code} ${plain}"
-        echo -n "${qr_code}" | qrencode -s8 -o ${cur_dir}/shadowsocks_r_qr.png
-        echo "Your QR Code has been saved as a PNG file path:"
-        echo -e "${green} ${cur_dir}/shadowsocks_r_qr.png ${plain}"
-    fi
-}
-
-qr_generate_go() {
-    if [ "$(command -v qrencode)" ]; then
-        local tmp=$(echo -n "${shadowsockscipher}:${shadowsockspwd}@$(get_ip):${shadowsocksport}" | base64 -w0)
-        local qr_code="ss://${tmp}"
-        echo
-        echo "Your QR Code: (For Shadowsocks Windows, OSX, Android and iOS clients)"
-        echo -e "${green} ${qr_code} ${plain}"
-        echo -n "${qr_code}" | qrencode -s8 -o ${cur_dir}/shadowsocks_go_qr.png
-        echo "Your QR Code has been saved as a PNG file path:"
-        echo -e "${green} ${cur_dir}/shadowsocks_go_qr.png ${plain}"
     fi
 }
 
@@ -1174,59 +941,6 @@ uninstall_shadowsocks_python() {
     else
         echo
         echo -e "[${green}Info${plain}] ${software[0]} uninstall cancelled, nothing to do..."
-        echo
-    fi
-}
-
-uninstall_shadowsocks_r() {
-    printf "Are you sure uninstall ${red}${software[1]}${plain}? [y/n]\n"
-    read -p "(default: n):" answer
-    [ -z ${answer} ] && answer="n"
-    if [ "${answer}" == "y" ] || [ "${answer}" == "Y" ]; then
-        ${shadowsocks_r_init} status > /dev/null 2>&1
-        if [ $? -eq 0 ]; then
-            ${shadowsocks_r_init} stop
-        fi
-        local service_name=$(basename ${shadowsocks_r_init})
-        if check_sys packageManager yum; then
-            chkconfig --del ${service_name}
-        elif check_sys packageManager apt; then
-            update-rc.d -f ${service_name} remove
-        fi
-        rm -fr $(dirname ${shadowsocks_r_config})
-        rm -f ${shadowsocks_r_init}
-        rm -f /var/log/shadowsocks.log
-        rm -fr /usr/local/shadowsocks
-        echo -e "[${green}Info${plain}] ${software[1]} uninstall success"
-    else
-        echo
-        echo -e "[${green}Info${plain}] ${software[1]} uninstall cancelled, nothing to do..."
-        echo
-    fi
-}
-
-uninstall_shadowsocks_go() {
-    printf "Are you sure uninstall ${red}${software[2]}${plain}? [y/n]\n"
-    read -p "(default: n):" answer
-    [ -z ${answer} ] && answer="n"
-    if [ "${answer}" == "y" ] || [ "${answer}" == "Y" ]; then
-        ${shadowsocks_go_init} status > /dev/null 2>&1
-        if [ $? -eq 0 ]; then
-            ${shadowsocks_go_init} stop
-        fi
-        local service_name=$(basename ${shadowsocks_go_init})
-        if check_sys packageManager yum; then
-            chkconfig --del ${service_name}
-        elif check_sys packageManager apt; then
-            update-rc.d -f ${service_name} remove
-        fi
-        rm -fr $(dirname ${shadowsocks_go_config})
-        rm -f ${shadowsocks_go_init}
-        rm -f /usr/bin/shadowsocks-server
-        echo -e "[${green}Info${plain}] ${software[2]} uninstall success"
-    else
-        echo
-        echo -e "[${green}Info${plain}] ${software[2]} uninstall cancelled, nothing to do..."
         echo
     fi
 }
