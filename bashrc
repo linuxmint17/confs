@@ -50,7 +50,7 @@ alias clang++='clang++ -O0 -g -W'
 alias gcc='gcc -O0 -g -W'
 alias g++='g++ -O0 -g -w'
 #export  PS1='\A\[$(ppwd)\]\u@\h:\W>'
- PS1='\[\033[0;32m\]\A[\u@\h]:\W>\[\033[0m\]'
+#PS1='\[\033[0;32m\]\A[\u@\h]:\W>\[\033[0m\]'
 #some color sequence for text 
 #Sequence     Text Color     Sequence       Text Color
 #\033[0;30m     Black        \033[1;30m     Dark  Gray
@@ -140,6 +140,7 @@ qeury(){
 bashcnf(){
     emacs -nw ~/.bashrc &&  source ~/.bashrc;
 }
-
+#my new ps1
+export PS1="\[\033[0;44m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;103m\] \[\033[0m\]\[\033[0;42m\]\u@\h\[\033[0m\]\n\[\033[0;45m\]\w\[\033[0m\]$"
     
 
