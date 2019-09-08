@@ -142,5 +142,18 @@ bashcnf(){
 }
 #my new ps1
 export PS1="\[\033[0;44m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;103m\] \[\033[0m\]\[\033[0;42m\]\u@\h\[\033[0m\]\n\[\033[0;45m\]\w\[\033[0m\]$"
+
+#PROMPT_DIRTRIM 
+
+
+#a function from wikipedia 
+#The following Bash function flashes the terminal (by alternately sending reverse and normal video mode codes) until the user presses a key.
+function flasher ()
+{
+        while true;
+        do printf \\e[?5h; sleep 0.1; printf \\e[?5l;
+                read -s -n1 -t1 && break;
+        done;
+}
     
 
