@@ -11,6 +11,9 @@
 	br = branch
 	ci = commit
 	unstage = reset HEAD --
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 	last = log -1 HEAD
 	st = status
 	pu = push
+	type = cat-file -t
+	dump = cat-file -p
