@@ -1,9 +1,8 @@
 [user]
 	name = linuxmint17
 	email = opensuselinux13.2@gmail.com
-	signingkey = 1A7EBE16EEA46B1D
 [core]
-	editor = emacs -nw
+	editor = vi 
 
 [credential]
 	helper = store
