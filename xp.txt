@@ -41,3 +41,5 @@ runlevel
 查看linux的默认网关
 route -n
 netstat -nr
+
+how to be more productive?
