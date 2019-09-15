@@ -140,9 +140,11 @@ qeury(){
 bashcnf(){
     emacs -nw ~/.bashrc &&  source ~/.bashrc;
 }
-#my new ps1
-export PS1="\[\033[0;44m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;103m\] \[\033[0m\]\[\033[0;42m\]\u@\h\[\033[0m\]\n\[\033[0;45m\]\w\[\033[0m\]$"
-
+#my new ps1 background color 
+#export PS1="\[\033[0;44m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;103m\] \[\033[0m\]\[\033[0;42m\]\u@\h\[\033[0m\]\n\[\033[0;45m\]\w\[\033[0m\]$"
+#my  new PS1 with text color 
+source ~/.git-prompt.sh
+export PS1="\[\033[0;32m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;35m\] \[\033[0m\]\[\033[0;42m\]\u@\h\[\033[0m\]\n\[\033[0;33m\]\w\w\[\033[36m\]`__git_ps1`\[\033[0m\]\n\$"
 #PROMPT_DIRTRIM 
 
 
