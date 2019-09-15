@@ -38,9 +38,8 @@ alias emacs='emacs -nw'
 alias free='free -h'
 alias du='du -h'
 #alias ssh='ssh -p 26780'
-
 alias l='ls -lh'
-alias cd..='cd ..'
+#alias cd..='cd ..'
 alias o='less'
 alias ll='ls -lah'
 alias cls='printf "\033c"'
@@ -76,11 +75,11 @@ if [ -f /etc/bash_completion ] ;then
 ### the following line for GPG config
 
 export GPG_TTY=$(tty)
-export PATH=~/bin:"$PATH"
+export PATH="~/bin":"$PATH"
 upgrade(){
-    sudo apt-get update &&
-	sudo apt-get -y upgrade;
-    echo;
+    sudo apt-get update ;
+    sudo apt-get -y upgrade;
+    echo "done";
 }
 
 #ipif(){
@@ -97,8 +96,8 @@ upgrade(){
 
 #}
 #get your ip
-ipif(){
-    curl ip.cn
+function ipif(){
+curl ip.cn;
 }
 
 
@@ -138,13 +137,15 @@ qeury(){
 }
 #config bashrc file 
 bashcnf(){
-    emacs -nw ~/.bashrc &&  source ~/.bashrc;
+    emacs  ~/.bashrc &&  source ~/.bashrc;
 }
 #my new ps1 background color 
 #export PS1="\[\033[0;44m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;103m\] \[\033[0m\]\[\033[0;42m\]\u@\h\[\033[0m\]\n\[\033[0;45m\]\w\[\033[0m\]$"
 #my  new PS1 with text color 
 source ~/.git-prompt.sh
-export PS1="\[\033[0;32m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;35m\] \[\033[0m\]\[\033[0;42m\]\u@\h\[\033[0m\]\n\[\033[0;33m\]\w\w\[\033[36m\]`__git_ps1`\[\033[0m\]\n\$"
+source ~/.git-completion.bash
+#        bash: ps1='[\u@\h \w$(__git_ps1 " (%s)")]\$ '
+export PS1='\[\033[0;32m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;35m\]\u@\h\[\033[0m\]\[\033[0;33m\]\w\[\033[36m\]$(__git_ps1 " (%s)")\033[0m\]\n\$'
 #PROMPT_DIRTRIM 
 
 
