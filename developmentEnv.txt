@@ -1,5 +1,0 @@
-gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-16)
-g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-16)
-GNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-100.el7
-valgrind-3.12.0
-GNU Make 3.82
