@@ -145,7 +145,7 @@ bashcnf(){
 source ~/.git-prompt.sh
 source ~/.git-completion.bash
 #        bash: ps1='[\u@\h \w$(__git_ps1 " (%s)")]\$ '
-export PS1='\[\033[0;32m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;35m\]\u@\h\[\033[0m\]\[\033[0;33m\]\w\[\033[36m\]$(__git_ps1 " (%s)")\033[0m\]\n\$'
+export PS1='\[\033[0;32m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;35m\]\u@\h\[\033[0m\]\[\033[0;33m\]\w\[\033[36m\]$(__git_ps1 " (%s)")\[\033[0m\]\n\$'
 #PROMPT_DIRTRIM 
 
 
