@@ -1,2 +1,9 @@
 DHCP timeout is taking so long. 
 Edit /etc/sysconfig/network/dhcp and change the values for DHCLIENT_WAIT_AT_BOOT and DHCLIENT6_WAIT_AT_BOOT
+
+查看linux运行级别
+who -r
+runlevel
+查看linux的默认网关
+route -n
+netstat -nr

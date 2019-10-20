@@ -7,14 +7,13 @@ int cat = 13;
  十进制的值为10
  
 2.C语言中x[i]的计算方法 *(x+sizeof(i))  x是个地址，一般写数组的时候，x是
-常量指针，
+常量指针,
 
 e.g.1
 int i;
 main ()
 {
-  for (; i["]<i;++i){--i;}"]; read ('-' - '-', i++ + "hell\
-o, world!\n", '/' / '/'));
+  for (; i["]<i;++i){--i;}"]; read ('-' - '-', i++ + "hello, world!\n", '/' / '/'));
 }
 read (j, i, p)
 {
@@ -30,16 +29,6 @@ int a =0xbabe;
 return 0[(unsigned char *)&a]== 0xbe;
 }
 
-3.c语言曾经main函数的参数可以有3个可以有一个，还可以自己调用自己
-
-	 
-
-
-查看linux运行级别
-who -r
-runlevel
-查看linux的默认网关
-route -n
-netstat -nr
+3.c语言main函数的参数可以有3个可以有一个，还可以自己调用自己
 
 how to be more productive?
