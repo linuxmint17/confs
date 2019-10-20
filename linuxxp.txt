@@ -7,3 +7,12 @@ runlevel
 查看linux的默认网关
 route -n
 netstat -nr
+
+#install ssh
+apt-get install ssh
+#install man pages
+apt-get install manpages-posix-dev
+#install git 
+apt-get install git-core gitk
+#install build-essential 
+atp-get build-essential gcc-doc
