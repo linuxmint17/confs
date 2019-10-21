@@ -62,8 +62,21 @@ set hls is
 set nocp  " not compatible with vi
 set tabstop=4 
 set shiftwidth=4
+set softtabstop=4 "backsapce witdh in insert mode
+"
+" replace tab to 4 space
+" :set ts=4
+" :set expandtab
+" :%retab!
+"
+" :replace 4 sapce to tab
+" :set ts=4
+" :set no expandtab
+" :%retab!
+"
+" ! means proc all tabs
 set hlsearch " hight light serach result
-set expandtab
+set expandtab " set noexpandtab
 set autoindent " automatic indent
 " Allow saving of files as sudo when I fogot to start vim using sudo
 cmap w!! w !sudo tee > /dev/null %

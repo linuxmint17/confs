@@ -12,7 +12,9 @@ netstat -nr
 apt-get install ssh
 #install man pages
 apt-get install manpages-posix-dev
+apt-get install gdb glibc-doc
 #install git 
 apt-get install git-core gitk
 #install build-essential 
 atp-get build-essential gcc-doc
+
