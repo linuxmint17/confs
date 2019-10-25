@@ -29,17 +29,21 @@ test -s ~/.alias && . ~/.alias || true
 alias e='emacs'
 alias youtube-dl='youtube-dl --proxy socks5://127.0.0.1:1080/'
 alias cx='chmod +x'
-# git command alias 
-alias gits='git status'
-alias gitc='git commit'
+
+# git command alias
 alias gita='git add'
+alias gitc='git commit'
+alias gitl='git log'
+alias gito='git checkout'
+alias gits='git status'
 alias gitp='git push'
+
 alias emacs='emacs -nw'
 alias free='free -h'
 alias du='du -h'
 #alias ssh='ssh -p 26780'
 alias l='ls -lh'
-#alias cd..='cd ..'
+alias cd..='cd ..'
 alias o='less'
 alias ll='ls -lah'
 alias cls='printf "\033c"'
