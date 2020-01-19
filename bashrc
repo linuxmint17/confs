@@ -25,35 +25,9 @@
 #export PILOTPORT=/dev/pilot
 #export PILOTRATE=115200
 
+#update alias for convenience
 test -s ~/.alias && . ~/.alias || true
-alias e='emacs'
-alias youtube-dl='youtube-dl --proxy socks5://127.0.0.1:1080/'
-alias cx='chmod +x'
 
-# git command alias
-alias gita='git add'
-alias gitc='git commit'
-alias gitl='git log'
-alias gito='git checkout'
-alias gits='git status'
-alias gitp='git push'
-
-alias emacs='emacs -nw'
-alias free='free -h'
-alias du='du -h'
-#alias ssh='ssh -p 26780'
-alias l='ls -lh'
-alias cd..='cd ..'
-alias o='less'
-alias ll='ls -lah'
-alias cls='printf "\033c"'
-alias ping='ping -c 4 '
-alias clang='clang -O0 -g -W'
-alias clang++='clang++ -O0 -g -W'
-alias gcc='gcc -O0 -g -W'
-alias g++='g++ -O0 -g -w'
-#export  PS1='\A\[$(ppwd)\]\u@\h:\W>'
-#PS1='\[\033[0;32m\]\A[\u@\h]:\W>\[\033[0m\]'
 #some color sequence for text 
 #Sequence     Text Color     Sequence       Text Color
 #\033[0;30m     Black        \033[1;30m     Dark  Gray
@@ -70,97 +44,112 @@ alias g++='g++ -O0 -g -w'
 #\033[0;41m     Red               \033[0;45m      Purple
 #\033[0;42m     Green             \033[0;46m      Cyan
 #\033[0;43m     Brown             \033[0;47m      Light Grey
-export MAN_POOASIXLY_CORRECT=1
+
+#export  PS1='\A\[$(ppwd)\]\u@\h:\W>'
+#PS1='\[\033[0;32m\]\A[\u@\h]:\W>\[\033[0m\]'
+#PS1 for git prompt
+source ~/.git-prompt.sh
+source ~/.git-completion.bash
+
+export PS1='\[\033[0;32m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;35m\]\u@\h\[\033[0m\]\[\033[0;33m\]\w\[\033[36m\]$(__git_ps1 " (%s)")\[\033[0m\]\n\$'
 
 ###for auto completion bash
 if [ -f /etc/bash_completion ] ;then
     source /etc/bash_completion
-    fi
-### the following line for GPG config
+fi
 
+#the following lines to solve "pressed twice tab but not complete"
+export MAN_POOASIXLY_CORRECT=1
+complete -cf sudo
+complete -cf man
+
+### the following line for GPG config
 export GPG_TTY=$(tty)
+###
 export PATH="~/bin":"$PATH"
-upgrade(){
+
+upgrade()
+{
     sudo apt-get update ;
     sudo apt-get -y upgrade;
     echo "done";
 }
 
 #ipif(){
- #   if grep -P "(([1-9]\d{0,2})\.){3}(?2)"<<< "$1";then
-	#	curl ipinfo.io/"$1"
-  #      curl ip.cn/"$1"
-   # else
-#	ipawk=($(host "$1"|awk '/address/ { print $NF }'|head --lines 1))
-#		curl ipinfo.io/${ipawk[1]}
-	#	curl ipinfo.io
-	#        curl ip.cn
- #   fi
-#    echo
-
+#if grep -P "(([1-9]\d{0,2})\.){3}(?2)"<<< "$1";then
+#   curl ipinfo.io/"$1"
+#      curl ip.cn/"$1"
+#else
+#   ipawk=($(host "$1"|awk '/address/ { print $NF }'|head --lines 1))
+#       curl ipinfo.io/${ipawk[1]}
+#   curl ipinfo.io
+#        curl ip.cn
+#fi
+#echo "done"
 #}
+
 #get your ip
-function ipif(){
-curl ip.cn;
+function ipif()
+{
+    curl ip.cn;
 }
 
-
 #cd and ls
-cl(){
+cl()
+{
     local dir="$1"
     if [[ -d "$dir" ]] ;then
-	cd $dir >/dev/null && ls
+    cd $dir >/dev/null && ls
     else
-	echo "bash : cl : $dir Directorf not found "
+    echo "bash : cl : $dir Directorf not found "
     fi
 }
       
 #calculator
-calc(){
+calc()
+{
     echo "scale=3 ; $@"|bc -l
-    }
+}
+
 #create a hotspot named 'deepinhotspot' passwd is 'deepin15'
-#hotspot(){
-#    sudo  create_ap --daemon  wlp2s0 enp3s0 deepinhotspot deepin15 
-#    echo 
-#    }
-#the following lines to solve "pressed  tab but n complete"
-complete -cf sudo
-complete -cf man
+#hotspot()
+#{
+#   sudo  create_ap --daemon  wlp2s0 enp3s0 deepinhotspot deepin15 
+#   echo "done"
+#}
+
 #search software
-search(){
+search()
+{
     sudo apt-cache search ${1};
 }
+
 #install software
-ins(){
+ins()
+{
     sudo apt-get install ${1};
 }
+
 #search weather installed some software
-qeury(){
+qeury()
+{
     dpkg  -l |grep ${1};
 }
+
 #config bashrc file 
-bashcnf(){
+bashcnf()
+{
     emacs  ~/.bashrc &&  source ~/.bashrc;
 }
-#my new ps1 background color 
-#export PS1="\[\033[0;44m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;103m\] \[\033[0m\]\[\033[0;42m\]\u@\h\[\033[0m\]\n\[\033[0;45m\]\w\[\033[0m\]$"
-#my  new PS1 with text color 
-source ~/.git-prompt.sh
-source ~/.git-completion.bash
-#        bash: ps1='[\u@\h \w$(__git_ps1 " (%s)")]\$ '
-export PS1='\[\033[0;32m\]\D{%Y/%m/%d} \t\[\033[0m\]\[\033[0;35m\]\u@\h\[\033[0m\]\[\033[0;33m\]\w\[\033[36m\]$(__git_ps1 " (%s)")\[\033[0m\]\n\$'
-#PROMPT_DIRTRIM 
 
+#PROMPT_DIRTRIM 
 
 #a function from wikipedia 
 #The following Bash function flashes the terminal (by alternately sending reverse and normal video mode codes) until the user presses a key.
-function flasher ()
+function flasher()
 {
-        while true;
+    while true;
         do printf \\e[?5h; sleep 0.1; printf \\e[?5l;
-                read -s -n1 -t1 && break;
-        done;
+            read -s -n1 -t1 && break;
+    done;
 }
-    
-

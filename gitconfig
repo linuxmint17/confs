@@ -1,19 +1,19 @@
 [user]
-	name = linuxmint17
-	email = opensuselinux13.2@gmail.com
+    name = linuxmint17
+    email = opensuselinux132@gmail.com
 [core]
-	editor = vi 
+    editor = vi 
 
 [credential]
-	helper = store
+    helper = store
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	unstage = reset HEAD --
-	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-	last = log -1 HEAD
-	st = status
-	pu = push
-	type = cat-file -t
-	dump = cat-file -p
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    pu = push
+    unstage = reset HEAD --
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    last = log -1 HEAD
+    type = cat-file -t
+    dump = cat-file -p
