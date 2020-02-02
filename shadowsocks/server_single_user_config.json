@@ -1,0 +1,10 @@
+{
+    "server":"::",
+    "server_port":3333,
+    "local_address": "127.0.0.1",
+    "local_port":1080,
+    "password":"123456",
+    "timeout":300,
+    "method":"chacha20-ietf-poly1305",  
+    "fast_open": false
+}

@@ -2,8 +2,7 @@
     name = linuxmint17
     email = opensuselinux132@gmail.com
 [core]
-    editor = vi 
-
+    editor = vi
 [credential]
     helper = store
 [alias]
