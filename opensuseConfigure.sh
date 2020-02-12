@@ -7,7 +7,7 @@ fcitx-libpinyin fcitx-cloudpinyin fcitx-sunpinyin fcitx-googlepinyin
 sudo zypper addrepo https://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome
 sudo zypper refresh
 sudo zypper install --non-interactive google-chrome-stable
-#this part is for sublimetext3 ;can call it by subl from terminal
+#this part is for sublimetext3 ;can lanuch it by subl from terminal
 sudo rpm  --import "https://download.sublimetext.com/sublimehq-rpm-pub.gpg"
 sudo zypper addrepo -g -f https://download.sublimetext.com/rpm/stable/x86_64/sulime-text.repo
 
