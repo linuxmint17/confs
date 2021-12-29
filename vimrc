@@ -61,12 +61,21 @@ set hlsearch " hight light serach result
 set expandtab " set noexpandtab
 set autoindent " automatic indent
 
+set backupdir=~/.vim/backupfiles
+set patchmode=.orig
 " file backup start with ~filename
 if has("vms")
   set nobackup
 else
   set backup
 endif
+
+" file backup start with ~filename
+"if has("vms")
+"  set nobackup
+"else
+"  set backup
+"endif
 		
 		
 "  use the following cmd to do the replace tab with 4 spaces, ! means proc all tabs
@@ -84,4 +93,5 @@ endif
 " Allow saving of files as sudo when I fogot to start vim using sudo
 cmap w!! w !sudo tee > /dev/null %
 
-colorscheme blue
+"colorscheme blue
+"this colorscheme should be optional
