@@ -1,4 +1,4 @@
-source $VIMRUNTIME/defaults.vim
+"source $VIMRUNTIME/defaults.vim
 
 " Vim will load $VIMRUNTIME/defaults.vim if the user does not have a vimrc.
 " This happens after /etc/vim/vimrc(.local) are loaded, so it will override
@@ -61,8 +61,6 @@ set hlsearch " hight light serach result
 set expandtab " set noexpandtab
 set autoindent " automatic indent
 
-set backupdir=~/.vim/backupfiles
-set patchmode=.orig
 " file backup start with ~filename
 if has("vms")
   set nobackup
@@ -70,14 +68,9 @@ else
   set backup
 endif
 
-" file backup start with ~filename
-"if has("vms")
-"  set nobackup
-"else
-"  set backup
-"endif
-		
-		
+set backupdir=~/.vim/backupfiles
+set backupext=.orig
+
 "  use the following cmd to do the replace tab with 4 spaces, ! means proc all tabs
 " replace tab to 4 space
 " :set ts=4
