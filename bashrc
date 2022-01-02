@@ -70,8 +70,7 @@ export PATH="~/bin":"$PATH"
 
 upgrade()
 {
-    sudo apt-get update ;
-    sudo apt-get -y upgrade;
+    sudo zypper -y update
     echo "done";
 }
 
@@ -91,7 +90,7 @@ upgrade()
 #get your ip
 function ipif()
 {
-    curl ip.cn;
+    curl ip.sb;
 }
 
 #cd and ls
@@ -119,15 +118,23 @@ calc()
 #}
 
 #search software
-search()
+search1()
 {
     sudo apt-cache search ${1};
 }
+search()
+{
+    sudo zypper search ${1};
+}
 
 #install software
-ins()
+ins1()
 {
     sudo apt-get install ${1};
+}
+ins()
+{
+    sudo zypper in -y${1};
 }
 
 #search weather installed some software
@@ -153,3 +160,24 @@ function flasher()
             read -s -n1 -t1 && break;
     done;
 }
+
+my_fortune()
+{
+        echo
+        echo "======================== Quote Of The Day ========================"
+        echo
+        if [[ -f /usr/bin/fortune ]] ;then
+        fortune
+        else
+        echo "Bad lucky!"
+        fi
+        echo
+        echo "=================================================================="
+        echo
+
+
+}
+
+my_fortune
+export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'
+
