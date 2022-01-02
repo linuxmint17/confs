@@ -1,0 +1,25 @@
+curl ifconfig.me
+curl icanhazip.com
+curl curlmyip.com
+curl ip.appspot.com
+curl ipinfo.io/ip
+curl ipecho.net/plain
+curl www.trackip.net/i
+ 
+ 
+#补充
+curl ip.sb
+curl ip.6655.com/ip.aspx
+curl whatismyip.akamai.com
+wget -qO - ifconfig.co
+dig +short myip.opendns.com @resolver1.opendns.com
+curl ident.me
+curl v4.ident.me
+curl v6.ident.me
+curl inet-ip.info
+ 
+#返回IP和地区
+curl ip.6655.com/ip.aspx?area=1
+curl 1111.ip138.com/ic.asp
+curl ip.cn
+curl cip.cc
