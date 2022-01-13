@@ -68,7 +68,7 @@ else
   set backup
 endif
 
-set backupdir=~/.vim/backupfiles
+set backupdir=~/.vim/
 set backupext=.orig
 
 "  use the following cmd to do the replace tab with 4 spaces, ! means proc all tabs

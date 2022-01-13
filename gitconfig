@@ -1,6 +1,6 @@
 [user]
     name = wangshaodong
-    email = shaodongwang@gmail.com
+    email = shaodongwang@foxmail.com
 [core]
     editor = vi
 [credential]
@@ -16,3 +16,5 @@
     last = log -1 HEAD
     type = cat-file -t
     dump = cat-file -p
+[commit]
+    template = ~/.git-commit-template.txt
