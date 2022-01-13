@@ -72,3 +72,12 @@ Host *
 #   ProxyCommand ssh -q -W %h:%p gateway.example.com
 #   RekeyLimit 1G 1h
 AddKeysToAgent yes
+
+IdentityFile ~/.ssh/foxmail_id_rsa
+IdentityFile ~/.ssh/qqmail_id_rsa
+IdentityFile ~/.ssh/outlook_id_rsa
+IdentityFile ~/.ssh/identity
+IdentityFile ~/.ssh/id_rsa
+IdentityFile ~/.ssh/id_dsa
+IdentityFile ~/.ssh/id_ecdsa
+IdentityFile ~/.ssh/id_ed25519

@@ -11,3 +11,7 @@ cp ./profile ~/.profile
 
 cp ./git-commit-template.txt ~/.git-commit-template.txt
 cp ./gitconfig ~/.gitconfig
+
+mkdir -p ~/.ssh
+cp ./publiic-keys/* ~/.ssh/*
+cp ./ssh-config ~/.ssh/config

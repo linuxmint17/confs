@@ -88,7 +88,7 @@ upgrade()
 #}
 
 #get your ip
-function ipif()
+function getip()
 {
     curl ip.sb;
 }
