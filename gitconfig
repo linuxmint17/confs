@@ -3,6 +3,7 @@
     email = shaodongwang@foxmail.com
 [core]
     editor = vi
+    filemode = true
 [credential]
     helper = store
 [alias]
