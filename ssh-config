@@ -73,9 +73,8 @@ Host *
 #   RekeyLimit 1G 1h
 AddKeysToAgent yes
 
-IdentityFile ~/.ssh/foxmail_id_ed25519
-IdentityFile ~/.ssh/qqmail_id_rsa
 IdentityFile ~/.ssh/outlook_id_ed25519
+IdentityFile ~/.ssh/foxmail_id_ed25519
 IdentityFile ~/.ssh/identity
 IdentityFile ~/.ssh/id_rsa
 IdentityFile ~/.ssh/id_dsa
