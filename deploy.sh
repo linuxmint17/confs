@@ -17,3 +17,4 @@ cp public-keys/* ~/.ssh/
 touch ~/.ssh/config
 cp ssh-config ~/.ssh/config
 
+source ~/.bashrc
