@@ -1,6 +1,7 @@
 [user]
     name = wangshaodong
     email = shaodongwang@foxmail.com
+    signingkey = 88E0B2FDB0D31ADB0FB4DE322A96C3DF74FC6F1A
 [core]
     editor = vi
     filemode = true
@@ -19,3 +20,4 @@
     dump = cat-file -p
 [commit]
     template = ~/.git-commit-template.txt
+    gpgsign = true

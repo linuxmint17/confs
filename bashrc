@@ -161,22 +161,6 @@ function flasher()
     done;
 }
 
-my_fortune()
-{
-        echo
-        echo "======================== Quote Of The Day ========================"
-        echo
-        if [[ -f /usr/bin/fortune ]] ;then
-        fortune
-        else
-        echo "Bad lucky!"
-        fi
-        echo
-        echo "=================================================================="
-        echo
-
-
-}
 
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'
 

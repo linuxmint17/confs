@@ -64,9 +64,14 @@ agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
 
 if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
     agent_start
-    ssh-add
+    ssh-add ~/.ssh/foxmail_id_ed25519 ~/.ssh/outlook_id_ed25519
 elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
-    ssh-add
+    ssh-add ~/.ssh/foxmail_id_ed25519 ~/.ssh/outlook_id_ed25519
 fi
 
 unset env
+
+
+# for gpg working
+# User specific environment and startup programs
+export GPG_TTY=$(tty)

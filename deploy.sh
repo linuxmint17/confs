@@ -16,5 +16,7 @@ mkdir -p ~/.ssh
 cp public-keys/* ~/.ssh/
 touch ~/.ssh/config
 cp ssh-config ~/.ssh/config
+chmod 600 ~/.ssh/config
+cp zshrc ~/.zshrc
 
 source ~/.bashrc

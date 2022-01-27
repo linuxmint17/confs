@@ -75,8 +75,3 @@ AddKeysToAgent yes
 
 IdentityFile ~/.ssh/outlook_id_ed25519
 IdentityFile ~/.ssh/foxmail_id_ed25519
-IdentityFile ~/.ssh/identity
-IdentityFile ~/.ssh/id_rsa
-IdentityFile ~/.ssh/id_dsa
-IdentityFile ~/.ssh/id_ecdsa
-IdentityFile ~/.ssh/id_ed25519
