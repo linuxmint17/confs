@@ -28,7 +28,7 @@ install_dev_env()
 {
     zypper install -y -t  pattern   devel_C_C++  devel_tcl  devel_kernel  devel_java  32bit devel_python3
 
-    zypper  install -y git git-core valgrind gcc-doc git-doc  finger  clang lldb cmake  make gparted  gdb w3m lynx elinks cnf \
+    zypper  install -y git git-core valgrind git-doc finger  clang lldb cmake  make gparted  gdb w3m lynx elinks \
         the_silver_searcher minicom emacs flex bison net-tools-deprecated  ncurses5-devel ncurses5-devel-32bit \
     gitk git-svn screen
 }
