@@ -75,3 +75,4 @@ unset env
 # for gpg working
 # User specific environment and startup programs
 export GPG_TTY=$(tty)
+export HISTFILESIZE=-1
