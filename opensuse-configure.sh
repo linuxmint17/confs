@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #configure opensuse after fresh installtion
 
 update_sys()
@@ -26,21 +25,21 @@ install_vscode()
 
 install_dev_env()
 {
-    zypper install -y -t  pattern   devel_C_C++  devel_tcl  devel_kernel  devel_java  32bit devel_python3
-
-    zypper  install -y git git-core valgrind git-doc finger  clang lldb cmake  make gparted  gdb w3m lynx elinks \
+    sudo zypper install -y -t  pattern   devel_C_C++  devel_tcl  devel_kernel  devel_java  32bit devel_python3 &&  \
+    sudo zypper  install -y git git-core valgrind git-doc finger  clang lldb cmake  make gparted  gdb w3m lynx elinks \
         the_silver_searcher minicom emacs flex bison net-tools-deprecated  ncurses5-devel ncurses5-devel-32bit \
     gitk git-svn screen
 }
 
 install_normal_env()
 {
-    zypper install --non-interactive  klavaro fcitx-pinyin \
+    sudo zypper install -y klavaro fcitx-pinyin \
     fcitx-libpinyin fcitx-cloudpinyin fcitx-sunpinyin fcitx-googlepinyin
 }
+
 install_funny_software()
 {
-    zypper install -y screenfetch neofetch  fortune
-    pip install doge
+    sudo zypper install -y screenfetch neofetch  fortune
+    sudo pip install doge
 }
  
