@@ -164,4 +164,7 @@ function flasher()
 
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'
 
+# for rust install accelerate
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
