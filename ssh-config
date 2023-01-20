@@ -75,3 +75,9 @@ AddKeysToAgent yes
 
 IdentityFile ~/.ssh/outlook_id_ed25519
 IdentityFile ~/.ssh/foxmail_id_ed25519
+
+Host github.com
+    HostName github.com
+    User git
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/foxmail_id_ed25519
