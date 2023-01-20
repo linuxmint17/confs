@@ -1,7 +1,7 @@
 [user]
     name = wang shaodong
     email = wang.shaodong@outlook.com
-    signingkey = 88E0B2FDB0D31ADB0FB4DE322A96C3DF74FC6F1A
+	signingkey = B0B248B134639A3AE1AA34F7B98D7B917479CCE4
 [core]
     editor = vi
     filemode = true
