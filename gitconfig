@@ -21,3 +21,5 @@
 [commit]
     template = ~/.git-commit-template.txt
     gpgsign = true
+[pull]
+	rebase = true
